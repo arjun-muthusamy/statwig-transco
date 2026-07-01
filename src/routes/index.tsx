@@ -22,12 +22,15 @@ import {
   ClipboardList,
   Eye,
   Gauge,
+  ArrowBigRight,
+  ArrowRight,
 } from "lucide-react";
-import dashState from "@/assets/dashboard-state.jpg";
+import dashState from "@/assets/dashboard-state.png";
 import dashLoc from "@/assets/dashboard-location.jpg";
 import dashInv from "@/assets/dashboard-inventory.jpg";
 import { loadDashboardData } from "./dashboard";
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 
 const config = loadDashboardData();
 
@@ -197,7 +200,7 @@ function HeroPage() {
       <div className="relative flex flex-col h-full">
         <div className="flex items-center justify-between text-[10px] tracking-[0.3em] uppercase text-[var(--muted)]">
           <div className="font-serif text-[22px] font-black tracking-tight text-[var(--accent)]">
-            STATWIG
+            {config.brand}
           </div>
           <span>For {config.target} · 2026</span>
         </div>
@@ -211,8 +214,7 @@ function HeroPage() {
             and Inventory Track &amp; Trace
           </h1>
           <p className="mt-4 max-w-[620px] text-[14px] text-[var(--ink-soft)] leading-relaxed">
-            Real-Time Procurement, Inventory Visibility, Monitoring, and Supply Chain Management
-            Platform.
+            {config.pageSubHeadingTitle}
           </p>
         </div>
 
@@ -245,7 +247,7 @@ function HeroPage() {
               <div className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse" />
               <span className="text-[10px] uppercase tracking-wider text-[var(--muted)]">Live</span>
             </div>
-            <div className="font-serif text-[18px] text-[var(--ink)]">Telangana</div>
+            <div className="font-serif text-[18px] text-[var(--ink)]">{config.state}</div>
             <div className="text-[10px] text-[var(--muted)]">State-wide visibility</div>
           </div>
         </div>
@@ -868,8 +870,8 @@ function OfferingPage() {
             </div>
           </div>
           <div className="text-right">
-            <div className="font-serif text-[18px]">sidchaks@statwig.com</div>
-            <div className="text-[10px] uppercase tracking-wider text-white/70">statwig.com</div>
+            <div className="font-serif text-[18px]">{config.email}</div>
+            <div className="text-[10px] uppercase tracking-wider text-white/70">{config.website}</div>
           </div>
         </div>
       </div>
@@ -915,6 +917,125 @@ function Proposal() {
 
   return (
     <div className="proposal-root min-h-screen py-8" style={{ background: "#3b3b3b" }}>
+      <style>{`
+        .prop-toolbar {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          z-index: 50;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 8px;
+          background: #FFFFFF;
+          border: 1px solid #E5E7EB;
+          border-radius: 14px;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18), 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .prop-toolbar-link {
+          position: fixed;
+          top: 80px;
+          right: 20px;
+          z-index: 50;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 8px;
+          background: #FFFFFF;
+          border: 1px solid #E5E7EB;
+          border-radius: 14px;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18), 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .prop-toolbar-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          height: 36px;
+          padding: 0 12px;
+          border-radius: 8px;
+          border: 1px solid transparent;
+          background: transparent;
+          color: #4B5563;
+          font-size: 13px;
+          font-weight: 600;
+          font-family: inherit;
+          cursor: pointer;
+          text-decoration: none;
+          white-space: nowrap;
+          transition: background 0.15s ease, color 0.15s ease;
+        }
+
+        .prop-toolbar-btn:hover {
+          background: #F3F4F6;
+          color: #111827;
+        }
+
+        .prop-divider {
+          width: 1px;
+          height: 24px;
+          background: #E5E7EB;
+        }
+
+        .prop-size-group {
+          display: flex;
+          padding: 2px;
+          background: #F3F4F6;
+          border-radius: 8px;
+        }
+
+        .prop-size-btn {
+          height: 32px;
+          padding: 0 12px;
+          border: none;
+          border-radius: 6px;
+          background: transparent;
+          color: #6B7280;
+          font-size: 13px;
+          font-weight: 600;
+          font-family: inherit;
+          cursor: pointer;
+          transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .prop-size-btn.is-active {
+          background: #FFFFFF;
+          color: #0F766E;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+        }
+
+        .prop-export-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          height: 36px;
+          padding: 0 16px;
+          border: none;
+          border-radius: 8px;
+          background: #0D9488;
+          color: #fff;
+          font-size: 13px;
+          font-weight: 700;
+          font-family: inherit;
+          cursor: pointer;
+          transition: background 0.15s ease;
+        }
+
+        .prop-export-btn:hover {
+          background: #0F766E;
+        }
+
+        @media print {
+          .prop-toolbar {
+            display: none !important;
+          }
+            .prop-toolbar-link {
+            display: none !important;
+          }
+        }
+      `}</style>
+
       <HeroPage />
       <AboutImpactPage />
       <VisionPage />
@@ -924,36 +1045,33 @@ function Proposal() {
       <BenefitsPage />
       <OfferingPage />
 
-      <div>
-        <select
-          id="page-size"
-          value={pageSize}
-          onChange={(e) => setPageSize(e.target.value as PageSize)}
-          style={{
-            padding: "6px 10px",
-            border: "1px solid #d1d5db",
-            borderRadius: 6,
-            fontSize: 14,
-          }}
-        >
-          <option value="a4">A4</option>
-          <option value="a5">A5</option>
-        </select>
+      <div className="prop-toolbar">
+        <div className="prop-size-group" role="group" aria-label="Page size">
+          <button
+            type="button"
+            className={`prop-size-btn${pageSize === "a4" ? " is-active" : ""}`}
+            onClick={() => setPageSize("a4")}
+          >
+            A4
+          </button>
+          <button
+            type="button"
+            className={`prop-size-btn${pageSize === "a5" ? " is-active" : ""}`}
+            onClick={() => setPageSize("a5")}
+          >
+            A5
+          </button>
+        </div>
 
-        <button
-          onClick={handlePrint}
-          style={{
-            padding: "8px 14px",
-            border: "1px solid #2563eb",
-            borderRadius: 6,
-            background: "#2563eb",
-            color: "#fff",
-            cursor: "pointer",
-            fontWeight: 600,
-          }}
-        >
-          Print / Export PDF
+        <button className="prop-export-btn" onClick={handlePrint}>
+          Export PDF
         </button>
+      </div>
+
+      <div className="prop-toolbar-link">
+        <Link to="/dashboard" className="prop-toolbar-btn">
+          Dashboard <ArrowRight />
+        </Link>
       </div>
     </div>
   );
