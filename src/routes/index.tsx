@@ -25,7 +25,7 @@ import {
   ArrowBigRight,
   ArrowRight,
 } from "lucide-react";
-import dashState from "@/assets/dashboard-state.png";
+import dashState from "@/assets/dashboard-state.jpg";
 import dashLoc from "@/assets/dashboard-location.jpg";
 import dashInv from "@/assets/dashboard-inventory.jpg";
 import { loadDashboardData } from "./dashboard";
