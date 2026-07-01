@@ -452,10 +452,11 @@ function RouteComponent() {
             <button type="button" className="stw-btn-ghost" onClick={handleReset}>
               Reset to defaults
             </button>
-            <span className={`stw-status${justSaved ? " is-saved" : ""}`}>
+           
+          </div>
+           <span className={`stw-status${justSaved ? " is-saved" : ""}`}>
               {justSaved ? "Saved" : isDirty ? "Unsaved changes" : ""}
             </span>
-          </div>
         </form>
       </main>
     </div>
