@@ -26,6 +26,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import dashState from "@/assets/dashboard-state.jpg";
+import dashState2 from "@/assets/dashboard_maharastra.png";
 import dashLoc from "@/assets/dashboard-location.jpg";
 import dashInv from "@/assets/dashboard-inventory.jpg";
 import { loadDashboardData } from "./dashboard";
@@ -591,7 +592,7 @@ function DashboardsPage() {
       <div className="space-y-6">
         <div>
           <LaptopMockup
-            src={dashState}
+            src={dashState2}
             alt="State-level dashboard"
             caption={`State-Level Dashboard · ${config.target}`}
           />
