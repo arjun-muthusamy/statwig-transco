@@ -237,7 +237,7 @@ function HeroPage() {
         <div className="mt-6 relative">
           <div className="relative rounded-xl overflow-hidden border border-[var(--line)] shadow-2xl">
             <img
-              src={dashState}
+              src={dashState2}
               alt="State-level dashboard"
               className="w-full aspect-[16/8] object-cover"
               loading="eager"
@@ -248,7 +248,7 @@ function HeroPage() {
               <div className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse" />
               <span className="text-[10px] uppercase tracking-wider text-[var(--muted)]">Live</span>
             </div>
-            <div className="font-serif text-[18px] text-[var(--ink)]">{config.state}</div>
+            <div className="font-serif text-[18px] text-[var(--ink)]">Maharashtra</div>
             <div className="text-[10px] text-[var(--muted)]">State-wide visibility</div>
           </div>
         </div>
@@ -275,7 +275,7 @@ function HeroPage() {
 function AboutImpactPage() {
   return (
     <Page>
-      <PageHeader n={2} total={TOTAL} />
+      <PageHeader n={5} total={TOTAL} />
       <SectionTitle
         kicker="About · Proven Impact"
         title="Supply chain visibility, delivered at scale."
@@ -384,13 +384,13 @@ function VisionPage() {
   ];
   return (
     <Page>
-      <PageHeader n={3} total={TOTAL} />
+      <PageHeader n={2} total={TOTAL} />
       <SectionTitle kicker="Vision" title={`A unified, real-time view for ${config.target}.`} />
 
       <div className="grid grid-cols-2 gap-6">
         <div>
           <p className="text-[13px] text-[var(--ink-soft)] leading-relaxed">
-            Enable a unified, real-time view of the entire procurement and inventory ecosystem for
+            Enable a unified, real-time view of the entire procurement and inventory ecosystem for{" "}
             {config.target} — covering structural materials, electrical equipment, and critical
             assets from vendor to deployment.
           </p>
@@ -507,7 +507,7 @@ function WorkflowPage() {
   ];
   return (
     <Page>
-      <PageHeader n={4} total={TOTAL} />
+      <PageHeader n={3} total={TOTAL} />
       <SectionTitle kicker="Proposed Workflow" title="From vendor to site, end-to-end." />
 
       <p className="text-[12.5px] text-[var(--ink-soft)] max-w-[640px] leading-relaxed mb-8">
@@ -581,7 +581,7 @@ function WorkflowPage() {
 function DashboardsPage() {
   return (
     <Page>
-      <PageHeader n={5} total={TOTAL} />
+      <PageHeader n={4} total={TOTAL} />
       <SectionTitle kicker="Dashboard Views" title="Visibility at every altitude." />
 
       <p className="text-[12.5px] text-[var(--ink-soft)] max-w-[640px] leading-relaxed mb-6">
@@ -872,7 +872,9 @@ function OfferingPage() {
           </div>
           <div className="text-right">
             <div className="font-serif text-[18px]">{config.email}</div>
-            <div className="text-[10px] uppercase tracking-wider text-white/70">{config.website}</div>
+            <div className="text-[10px] uppercase tracking-wider text-white/70">
+              {config.website}
+            </div>
           </div>
         </div>
       </div>
@@ -1038,10 +1040,10 @@ function Proposal() {
       `}</style>
 
       <HeroPage />
-      <AboutImpactPage />
       <VisionPage />
       <WorkflowPage />
       <DashboardsPage />
+      <AboutImpactPage />
       <FeaturesPage />
       <BenefitsPage />
       <OfferingPage />
@@ -1077,3 +1079,4 @@ function Proposal() {
     </div>
   );
 }
+
